@@ -1,0 +1,3 @@
+-keep class com.zeitbank.** { *; }
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
