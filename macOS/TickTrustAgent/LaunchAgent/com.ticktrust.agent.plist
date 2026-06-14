@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ticktrust.agent</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Library/TickTrust/TickTrustAgent</string>
+    </array>
+
+    <!-- Start at login, restart immediately if it crashes -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Log output (readable only by admin) -->
+    <key>StandardOutPath</key>
+    <string>/Library/Logs/TickTrust/agent.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Library/Logs/TickTrust/agent-error.log</string>
+
+    <!-- Throttle restarts to avoid tight crash loop -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+</dict>
+</plist>
