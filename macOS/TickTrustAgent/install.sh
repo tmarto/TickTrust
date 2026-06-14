@@ -1,14 +1,14 @@
 #!/bin/bash
 # TickTrust macOS Agent — install script
 # Run as admin (sudo) on the MacBook.
-# Usage: sudo ./install.sh <device_id>
+# Usage: sudo bash install.sh <device_id> <supabase_anon_key>
+# The TickTrust parent app generates this command automatically.
 
 set -euo pipefail
 
-DEVICE_ID="${1:?Usage: sudo $0 <device_id>}"
+DEVICE_ID="${1:?Usage: sudo $0 <device_id> <supabase_anon_key>}"
+SUPABASE_ANON_KEY="${2:?Usage: sudo $0 <device_id> <supabase_anon_key>}"
 SUPABASE_URL="https://xdwvhezjgmcptyncoipa.supabase.co"
-# Replace with the actual Supabase anon key from your project settings
-SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY_HERE"
 
 INSTALL_DIR="/Library/TickTrust"
 LOG_DIR="/Library/Logs/TickTrust"
