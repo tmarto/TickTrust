@@ -5,7 +5,7 @@ final class SupabaseService: ObservableObject {
 
     let projectURL  = "https://xdwvhezjgmcptyncoipa.supabase.co"
     // Anon key — safe to embed in client app (RLS enforces access control)
-    let anonKey     = "YOUR_SUPABASE_ANON_KEY"
+    let anonKey     = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkd3ZoZXpqZ21jcHR5bmNvaXBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0MTU4NjMsImV4cCI6MjA5Njk5MTg2M30.IWD7nqQj0nl9e781Psey8WXRJyyb282SaRwqLoKL0OQ"
 
     private var authToken: String?
     private let session = URLSession.shared
