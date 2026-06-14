@@ -254,9 +254,15 @@ jobs:
 
       - name: Set up App Store Connect API key
         env:
-          API_KEY_BASE64: ${{ secrets.APPSTORE_API_PRIVATE_KEY_BASE64 }}
+          API_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY_BASE64 }}
         run: |
-          echo -n "$API_KEY_BASE64" | base64 --decode -o "$RUNNER_TEMP/AuthKey.p8"
+          KEY="$RUNNER_TEMP/AuthKey.p8"
+          # Accept either the raw .p8 (PEM) or its base64 encoding
+          if printf '%s' "$API_KEY" | grep -q 'BEGIN PRIVATE KEY'; then
+            printf '%s\n' "$API_KEY" > "$KEY"
+          else
+            printf '%s' "$API_KEY" | base64 --decode > "$KEY"
+          fi
 
       - name: Archive (signed release, automatic cloud signing)
         run: |
