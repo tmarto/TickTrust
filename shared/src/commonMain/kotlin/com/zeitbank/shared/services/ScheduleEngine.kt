@@ -25,8 +25,12 @@ class ScheduleEngine {
         val limit = limits.firstOrNull { it.appPackage == appPackage && it.enabled } ?: return emptyList()
         val effectiveLimitMinutes = (limit.dailyMinutes + account.bonusMinutes - account.debtMinutes).coerceAtLeast(0)
         val remainingSeconds = ((effectiveLimitMinutes - account.usedMinutes) * 60).coerceAtLeast(0)
+        val maxThreshold = warningThresholdsSeconds.maxOrNull() ?: return emptyList()
+        // Too early to warn until the child enters the final warning window
+        if (remainingSeconds > maxThreshold) return emptyList()
+        // Pending = thresholds the countdown hasn't reached yet (strictly below remaining)
         return warningThresholdsSeconds
-            .filter { it >= remainingSeconds }
+            .filter { it < remainingSeconds }
             .map { KillWarning(appPackage, it) }
     }
 }
