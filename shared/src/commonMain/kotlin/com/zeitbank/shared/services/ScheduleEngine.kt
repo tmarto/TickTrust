@@ -6,7 +6,6 @@ import com.zeitbank.shared.models.TimeAccount
 data class KillWarning(val appPackage: String, val secondsRemaining: Int)
 
 class ScheduleEngine {
-
     fun shouldKill(
         appPackage: String,
         account: TimeAccount,

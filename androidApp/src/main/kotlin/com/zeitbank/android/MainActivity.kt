@@ -15,37 +15,42 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val sampleChildren = listOf(
-            Child(
-                id = "c1",
-                name = "Ines",
-                devices = listOf(
-                    Device(
-                        id = "d1",
-                        name = "Ines iPhone",
-                        childId = "c1",
-                        appLimits = listOf(
-                            AppLimit("a1", "com.mojang.minecraftpe", "Minecraft", 60),
-                            AppLimit("a2", "com.roblox.client", "Roblox", 45),
+        val sampleChildren =
+            listOf(
+                Child(
+                    id = "c1",
+                    name = "Ines",
+                    devices =
+                        listOf(
+                            Device(
+                                id = "d1",
+                                name = "Ines iPhone",
+                                childId = "c1",
+                                appLimits =
+                                    listOf(
+                                        AppLimit("a1", "com.mojang.minecraftpe", "Minecraft", 60),
+                                        AppLimit("a2", "com.roblox.client", "Roblox", 45),
+                                    ),
+                            ),
                         ),
-                    )
                 ),
-            ),
-            Child(
-                id = "c2",
-                name = "Pedro",
-                devices = listOf(
-                    Device(
-                        id = "d2",
-                        name = "Pedro iPad",
-                        childId = "c2",
-                        appLimits = listOf(
-                            AppLimit("a3", "com.mojang.minecraftpe", "Minecraft", 90),
+                Child(
+                    id = "c2",
+                    name = "Pedro",
+                    devices =
+                        listOf(
+                            Device(
+                                id = "d2",
+                                name = "Pedro iPad",
+                                childId = "c2",
+                                appLimits =
+                                    listOf(
+                                        AppLimit("a3", "com.mojang.minecraftpe", "Minecraft", 90),
+                                    ),
+                            ),
                         ),
-                    )
                 ),
-            ),
-        )
+            )
 
         setContent {
             ZeitBankTheme {

@@ -30,7 +30,7 @@ fun ChildDetailScreen(
                     }
                 },
             )
-        }
+        },
     ) { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding),
@@ -63,7 +63,10 @@ fun ChildDetailScreen(
 }
 
 @Composable
-private fun AppLimitRow(limit: AppLimit, onToggle: (Boolean) -> Unit) {
+private fun AppLimitRow(
+    limit: AppLimit,
+    onToggle: (Boolean) -> Unit,
+) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),

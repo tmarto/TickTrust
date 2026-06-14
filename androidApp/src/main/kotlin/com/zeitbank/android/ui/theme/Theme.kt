@@ -9,15 +9,17 @@ import androidx.compose.ui.graphics.Color
 private val PrimaryBlue = Color(0xFF1565C0)
 private val SecondaryOrange = Color(0xFFE65100)
 
-private val LightColors = lightColorScheme(
-    primary = PrimaryBlue,
-    secondary = SecondaryOrange,
-)
+private val LightColors =
+    lightColorScheme(
+        primary = PrimaryBlue,
+        secondary = SecondaryOrange,
+    )
 
-private val DarkColors = darkColorScheme(
-    primary = Color(0xFF90CAF9),
-    secondary = Color(0xFFFFCC02),
-)
+private val DarkColors =
+    darkColorScheme(
+        primary = Color(0xFF90CAF9),
+        secondary = Color(0xFFFFCC02),
+    )
 
 @Composable
 fun ZeitBankTheme(

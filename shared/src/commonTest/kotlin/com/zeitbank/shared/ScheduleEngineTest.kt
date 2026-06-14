@@ -9,18 +9,19 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class ScheduleEngineTest {
-
     private val engine = ScheduleEngine()
-    private val limits = listOf(
-        AppLimit(id = "l1", appPackage = "com.game.minecraft", appName = "Minecraft", dailyMinutes = 60),
-        AppLimit(id = "l2", appPackage = "com.game.roblox", appName = "Roblox", dailyMinutes = 30, enabled = false),
-    )
-    private val baseAccount = TimeAccount(
-        childId = "child1",
-        date = "2026-06-11",
-        allocatedMinutes = 120,
-        usedMinutes = 0,
-    )
+    private val limits =
+        listOf(
+            AppLimit(id = "l1", appPackage = "com.game.minecraft", appName = "Minecraft", dailyMinutes = 60),
+            AppLimit(id = "l2", appPackage = "com.game.roblox", appName = "Roblox", dailyMinutes = 30, enabled = false),
+        )
+    private val baseAccount =
+        TimeAccount(
+            childId = "child1",
+            date = "2026-06-11",
+            allocatedMinutes = 120,
+            usedMinutes = 0,
+        )
 
     @Test
     fun `shouldKill false when under limit`() {

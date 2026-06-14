@@ -20,7 +20,7 @@ fun ParentDashboardScreen(
     Scaffold(
         topBar = {
             TopAppBar(title = { Text("ZeitBank") })
-        }
+        },
     ) { padding ->
         if (children.isEmpty()) {
             Box(
@@ -44,7 +44,10 @@ fun ParentDashboardScreen(
 }
 
 @Composable
-private fun ChildCard(child: Child, onClick: () -> Unit) {
+private fun ChildCard(
+    child: Child,
+    onClick: () -> Unit,
+) {
     Card(
         modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),

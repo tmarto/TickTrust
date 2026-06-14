@@ -4,18 +4,18 @@ import com.zeitbank.shared.models.TimeAccount
 import com.zeitbank.shared.services.TimeBankService
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import kotlin.test.assertFailsWith
 
 class TimeBankServiceTest {
-
     private val service = TimeBankService()
-    private val baseAccount = TimeAccount(
-        childId = "child1",
-        date = "2026-06-11",
-        allocatedMinutes = 60,
-    )
+    private val baseAccount =
+        TimeAccount(
+            childId = "child1",
+            date = "2026-06-11",
+            allocatedMinutes = 60,
+        )
 
     @Test
     fun `availableMinutes equals allocated when nothing used`() {
