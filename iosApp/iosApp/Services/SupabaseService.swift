@@ -14,6 +14,9 @@ final class SupabaseService: ObservableObject {
         return d
     }()
 
+    @Published var isAuthenticated = false
+    private(set) var currentParentId: String?
+
     private init() {}
 
     // MARK: - Auth
@@ -26,10 +29,69 @@ final class SupabaseService: ObservableObject {
         req.setValue(anonKey, forHTTPHeaderField: "apikey")
         req.httpBody = try JSONEncoder().encode(["email": email, "password": password])
         let (data, _) = try await session.data(for: req)
-        struct AuthResponse: Decodable { let access_token: String }
+        try await handleAuthResponse(data)
+    }
+
+    func signUp(email: String, password: String) async throws {
+        let url = URL(string: "\(projectURL)/auth/v1/signup")!
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.setValue(anonKey, forHTTPHeaderField: "apikey")
+        req.httpBody = try JSONEncoder().encode(["email": email, "password": password])
+        _ = try await session.data(for: req)
+        // Email confirmation required — don't set authToken yet
+    }
+
+    func signInWithApple(idToken: String, nonce: String, fullName: String?) async throws {
+        let url = URL(string: "\(projectURL)/auth/v1/token?grant_type=id_token")!
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.setValue(anonKey, forHTTPHeaderField: "apikey")
+        struct AppleBody: Encodable {
+            let provider: String
+            let id_token: String
+            let nonce: String
+            let gotrue_meta_security: [String: String]
+        }
+        req.httpBody = try JSONEncoder().encode(AppleBody(
+            provider: "apple",
+            id_token: idToken,
+            nonce: nonce,
+            gotrue_meta_security: [:]
+        ))
+        let (data, _) = try await session.data(for: req)
+        try await handleAuthResponse(data)
+
+        // Update parent name if Apple provided it
+        if let name = fullName, !name.isEmpty, let parentId = currentParentId {
+            try? await patch("/rest/v1/parents?id=eq.\(parentId)", body: ["name": name])
+        }
+    }
+
+    func signOut() {
+        authToken       = nil
+        currentParentId = nil
+        DispatchQueue.main.async { self.isAuthenticated = false }
+    }
+
+    private func handleAuthResponse(_ data: Data) async throws {
+        struct AuthResponse: Decodable {
+            let access_token: String
+            let user: UserPayload
+        }
+        struct UserPayload: Decodable { let id: String }
         let resp = try JSONDecoder().decode(AuthResponse.self, from: data)
         authToken = resp.access_token
+
+        // Fetch parent row to get our public parent ID
+        let parents: [ParentRow] = try await get("/rest/v1/parents?supabase_uid=eq.\(resp.user.id)&limit=1")
+        currentParentId = parents.first?.id
+        DispatchQueue.main.async { self.isAuthenticated = true }
     }
+
+    private struct ParentRow: Decodable { let id: String }
 
     // MARK: - Children
 
