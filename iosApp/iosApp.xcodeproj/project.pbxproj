@@ -21,6 +21,7 @@
 		A1000012 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000013 /* SupabaseService.swift */; };
 		A1000013 /* AddDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000014 /* AddDeviceView.swift */; };
 		A1000014 /* DeviceInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000015 /* DeviceInstallView.swift */; };
+		A1000015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000017 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A2000014 /* AddDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceView.swift; sourceTree = "<group>"; };
 		A2000015 /* DeviceInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstallView.swift; sourceTree = "<group>"; };
 		A2000016 /* iosApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosApp.entitlements; sourceTree = "<group>"; };
+		A2000017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				A4000005 /* Services */,
 				A4000006 /* Onboarding */,
 				A2000016 /* iosApp.entitlements */,
+				A2000017 /* Assets.xcassets */,
 				A2000005 /* Info.plist */,
 			);
 			path = iosApp;
@@ -183,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1000015 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +345,8 @@
 				DEVELOPMENT_TEAM = NBTYA5Q847;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -372,7 +377,8 @@
 				DEVELOPMENT_TEAM = NBTYA5Q847;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -252,6 +252,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Select Xcode 26 (App Store requires the iOS 26 SDK)
+        run: |
+          XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          if [ -z "$XC" ]; then
+            echo "Xcode 26 not found. Installed Xcodes:"; ls -d /Applications/Xcode_*.app
+            XC=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          fi
+          echo "Selecting $XC"
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+
       - name: Set up App Store Connect API key
         env:
           API_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY_BASE64 }}
