@@ -11,6 +11,16 @@
 		A1000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002 /* ContentView.swift */; };
 		A1000003 /* ParentDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003 /* ParentDashboardView.swift */; };
 		A1000004 /* ChildDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000004 /* ChildDetailView.swift */; };
+		A1000005 /* AddChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000006 /* AddChildView.swift */; };
+		A1000006 /* DeviceAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000007 /* DeviceAppsView.swift */; };
+		A1000007 /* AddManagedAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000008 /* AddManagedAppView.swift */; };
+		A1000008 /* EditAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000009 /* EditAppView.swift */; };
+		A1000009 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000010 /* LoginView.swift */; };
+		A1000010 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000011 /* AuthViewModel.swift */; };
+		A1000011 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000012 /* Models.swift */; };
+		A1000012 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000013 /* SupabaseService.swift */; };
+		A1000013 /* AddDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000014 /* AddDeviceView.swift */; };
+		A1000014 /* DeviceInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000015 /* DeviceInstallView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +30,17 @@
 		A2000003 /* ParentDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDashboardView.swift; sourceTree = "<group>"; };
 		A2000004 /* ChildDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDetailView.swift; sourceTree = "<group>"; };
 		A2000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2000006 /* AddChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildView.swift; sourceTree = "<group>"; };
+		A2000007 /* DeviceAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAppsView.swift; sourceTree = "<group>"; };
+		A2000008 /* AddManagedAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddManagedAppView.swift; sourceTree = "<group>"; };
+		A2000009 /* EditAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppView.swift; sourceTree = "<group>"; };
+		A2000010 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A2000011 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		A2000012 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A2000013 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
+		A2000014 /* AddDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceView.swift; sourceTree = "<group>"; };
+		A2000015 /* DeviceInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstallView.swift; sourceTree = "<group>"; };
+		A2000016 /* iosApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +77,52 @@
 				A2000002 /* ContentView.swift */,
 				A2000003 /* ParentDashboardView.swift */,
 				A2000004 /* ChildDetailView.swift */,
+				A2000006 /* AddChildView.swift */,
+				A2000007 /* DeviceAppsView.swift */,
+				A2000008 /* AddManagedAppView.swift */,
+				A2000009 /* EditAppView.swift */,
+				A4000003 /* Auth */,
+				A4000004 /* Models */,
+				A4000005 /* Services */,
+				A4000006 /* Onboarding */,
+				A2000016 /* iosApp.entitlements */,
 				A2000005 /* Info.plist */,
 			);
 			path = iosApp;
+			sourceTree = "<group>";
+		};
+		A4000003 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A2000010 /* LoginView.swift */,
+				A2000011 /* AuthViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A4000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2000012 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A4000005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A2000013 /* SupabaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A4000006 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A2000014 /* AddDeviceView.swift */,
+				A2000015 /* DeviceInstallView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +197,16 @@
 				A1000002 /* ContentView.swift in Sources */,
 				A1000003 /* ParentDashboardView.swift in Sources */,
 				A1000004 /* ChildDetailView.swift in Sources */,
+				A1000005 /* AddChildView.swift in Sources */,
+				A1000006 /* DeviceAppsView.swift in Sources */,
+				A1000007 /* AddManagedAppView.swift in Sources */,
+				A1000008 /* EditAppView.swift in Sources */,
+				A1000009 /* LoginView.swift in Sources */,
+				A1000010 /* AuthViewModel.swift in Sources */,
+				A1000011 /* Models.swift in Sources */,
+				A1000012 /* SupabaseService.swift in Sources */,
+				A1000013 /* AddDeviceView.swift in Sources */,
+				A1000014 /* DeviceInstallView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -247,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -261,8 +335,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NBTYA5Q847;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -271,13 +347,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zeitbank.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ticktrust.siwa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -290,8 +366,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NBTYA5Q847;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -300,13 +378,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zeitbank.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ticktrust.siwa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

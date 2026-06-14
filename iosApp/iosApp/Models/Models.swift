@@ -39,7 +39,7 @@ struct Child: Identifiable, Codable {
     }
 }
 
-struct Device: Identifiable, Codable {
+struct Device: Identifiable, Codable, Hashable {
     let id: String
     let childId: String
     var name: String
@@ -79,8 +79,7 @@ struct TimeAccount: Codable {
     var debtMinutes: Int
 
     var availableMinutes: Int {
-        let app_limit = 0 // resolved at call site
-        return max(0, Int(Double(bonusMinutes - debtMinutes) - usedMinutes))
+        max(0, Int(Double(bonusMinutes - debtMinutes) - usedMinutes))
     }
 
     enum CodingKeys: String, CodingKey {
