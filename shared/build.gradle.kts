@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
@@ -12,6 +14,7 @@ kotlin {
         }
     }
 
+    val xcframework = XCFramework("ZeitBankShared")
     listOf(
         iosX64(),
         iosArm64(),
@@ -20,6 +23,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ZeitBankShared"
             isStatic = true
+            xcframework.add(this)
         }
     }
 

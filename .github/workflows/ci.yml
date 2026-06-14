@@ -149,8 +149,10 @@ jobs:
       - name: Rename APK
         run: |
           VERSION=$(echo "${GITHUB_REF_NAME:-$GITHUB_SHA}" | tr '/' '-')
-          cp androidApp/build/outputs/apk/release/androidApp-release.apk \
-             androidApp/build/outputs/apk/release/zeitbank-${VERSION}.apk
+          # An unsigned, minified release build produces androidApp-release-unsigned.apk
+          APK=$(find androidApp/build/outputs/apk/release -name '*.apk' | head -1)
+          echo "Found APK: $APK"
+          cp "$APK" "androidApp/build/outputs/apk/release/zeitbank-${VERSION}.apk"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
