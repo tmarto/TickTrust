@@ -17,11 +17,14 @@ struct ParentDashboardView: View {
                 )
             }
             ForEach(children) { child in
-                NavigationLink(destination: ChildDetailView(child: child)) {
+                NavigationLink(value: child) {
                     Label(child.name, systemImage: "person.fill")
                         .padding(.vertical, 4)
                 }
             }
+        }
+        .navigationDestination(for: Child.self) { child in
+            ChildDetailView(child: child)
         }
         .navigationTitle("TickTrust")
         .toolbar {

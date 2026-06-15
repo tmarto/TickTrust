@@ -20,11 +20,7 @@ struct DeviceAppsView: View {
                         .font(.subheadline)
                 }
                 ForEach(apps) { app in
-                    NavigationLink(destination: EditAppView(app: app, onSave: { updated in
-                        if let i = apps.firstIndex(where: { $0.id == updated.id }) {
-                            apps[i] = updated
-                        }
-                    })) {
+                    NavigationLink(value: app) {
                         AppRowView(app: app)
                     }
                 }
@@ -41,6 +37,13 @@ struct DeviceAppsView: View {
                         .foregroundStyle(.green)
                 }
             }
+        }
+        .navigationDestination(for: ManagedApp.self) { app in
+            EditAppView(app: app, onSave: { updated in
+                if let i = apps.firstIndex(where: { $0.id == updated.id }) {
+                    apps[i] = updated
+                }
+            })
         }
         .navigationTitle(device.name)
         .toolbar {

@@ -19,7 +19,7 @@ struct ChildDetailView: View {
             }
             Section("Devices") {
                 ForEach(devices) { device in
-                    NavigationLink(destination: DeviceAppsView(device: device, childId: child.id)) {
+                    NavigationLink(value: device) {
                         DeviceRowView(device: device)
                     }
                 }
@@ -27,6 +27,9 @@ struct ChildDetailView: View {
                     Task { await deleteDevices(at: offsets) }
                 }
             }
+        }
+        .navigationDestination(for: Device.self) { device in
+            DeviceAppsView(device: device, childId: device.childId)
         }
         .navigationTitle(child.name)
         .toolbar {

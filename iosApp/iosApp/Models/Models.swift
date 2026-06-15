@@ -24,7 +24,7 @@ enum DeviceType: String, CaseIterable, Identifiable, Codable {
     }
 }
 
-struct Child: Identifiable, Codable {
+struct Child: Identifiable, Codable, Hashable {
     let id: String
     let parentId: String
     var name: String
@@ -53,7 +53,7 @@ struct Device: Identifiable, Codable, Hashable {
     }
 }
 
-struct ManagedApp: Identifiable, Codable {
+struct ManagedApp: Identifiable, Codable, Hashable {
     let id: String
     let deviceId: String
     var bundleId: String
