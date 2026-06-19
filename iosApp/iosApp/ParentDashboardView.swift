@@ -22,6 +22,14 @@ struct ParentDashboardView: View {
                         .padding(.vertical, 4)
                 }
             }
+
+            Section("This device") {
+                NavigationLink {
+                    ChildDeviceSetupView()
+                } label: {
+                    Label("Set up as a child device", systemImage: "iphone.gen3")
+                }
+            }
         }
         .navigationDestination(for: Child.self) { child in
             ChildDetailView(child: child)

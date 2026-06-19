@@ -22,6 +22,8 @@
 		A1000013 /* AddDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000014 /* AddDeviceView.swift */; };
 		A1000014 /* DeviceInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000015 /* DeviceInstallView.swift */; };
 		A1000015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000017 /* Assets.xcassets */; };
+		A1000016 /* ScreenTimeAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000018 /* ScreenTimeAgent.swift */; };
+		A1000017 /* ChildDeviceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000019 /* ChildDeviceSetupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		A2000015 /* DeviceInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstallView.swift; sourceTree = "<group>"; };
 		A2000016 /* iosApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosApp.entitlements; sourceTree = "<group>"; };
 		A2000017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2000018 /* ScreenTimeAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAgent.swift; sourceTree = "<group>"; };
+		A2000019 /* ChildDeviceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDeviceSetupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				A4000004 /* Models */,
 				A4000005 /* Services */,
 				A4000006 /* Onboarding */,
+				A4000007 /* Agent */,
 				A2000016 /* iosApp.entitlements */,
 				A2000017 /* Assets.xcassets */,
 				A2000005 /* Info.plist */,
@@ -117,6 +122,15 @@
 				A2000013 /* SupabaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		A4000007 /* Agent */ = {
+			isa = PBXGroup;
+			children = (
+				A2000018 /* ScreenTimeAgent.swift */,
+				A2000019 /* ChildDeviceSetupView.swift */,
+			);
+			path = Agent;
 			sourceTree = "<group>";
 		};
 		A4000006 /* Onboarding */ = {
@@ -211,6 +225,8 @@
 				A1000012 /* SupabaseService.swift in Sources */,
 				A1000013 /* AddDeviceView.swift in Sources */,
 				A1000014 /* DeviceInstallView.swift in Sources */,
+				A1000016 /* ScreenTimeAgent.swift in Sources */,
+				A1000017 /* ChildDeviceSetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
