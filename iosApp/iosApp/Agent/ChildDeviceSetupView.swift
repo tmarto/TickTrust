@@ -8,6 +8,7 @@ struct ChildDeviceSetupView: View {
     @StateObject private var agent = ScreenTimeAgent.shared
     @State private var pickerPresented = false
     @State private var working = false
+    @State private var dailyLimitMinutes = 60
 
     var body: some View {
         Form {
@@ -49,6 +50,33 @@ struct ChildDeviceSetupView: View {
             }
 
             Section {
+                Stepper(value: $dailyLimitMinutes, in: 5...600, step: 5) {
+                    Text("Daily limit: \(dailyLimitMinutes) min")
+                }
+
+                if agent.isMonitoring {
+                    Label("Daily limit active", systemImage: "timer")
+                        .foregroundStyle(.green)
+                    Button(role: .destructive) {
+                        agent.stopMonitoring()
+                    } label: {
+                        Label("Stop daily limit", systemImage: "stop.circle")
+                    }
+                } else {
+                    Button {
+                        agent.startMonitoring(dailyLimitMinutes: dailyLimitMinutes)
+                    } label: {
+                        Label("Start daily limit", systemImage: "timer")
+                    }
+                    .disabled(!agent.isAuthorized || !agent.hasSelection)
+                }
+            } header: {
+                Text("Step 3 — Daily limit")
+            } footer: {
+                Text("When the selected apps reach the daily limit they're blocked until the next day. Limit resets each day at midnight.")
+            }
+
+            Section {
                 Button {
                     agent.applyShield()
                 } label: {
@@ -63,9 +91,7 @@ struct ChildDeviceSetupView: View {
                 }
                 .disabled(!agent.isAuthorized)
             } header: {
-                Text("Step 3 — Enforce")
-            } footer: {
-                Text("Immediate block is for testing. Daily time limits arrive with the monitoring extension.")
+                Text("Manual override (testing)")
             }
         }
         .navigationTitle("Child Device Setup")

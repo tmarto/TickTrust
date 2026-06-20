@@ -1,5 +1,6 @@
-import Foundation
+import DeviceActivity
 import FamilyControls
+import Foundation
 import ManagedSettings
 
 /// On-device (child) agent built on Apple's Screen Time APIs.
@@ -23,14 +24,15 @@ final class ScreenTimeAgent: ObservableObject {
 
     @Published private(set) var isAuthorized = false
     @Published private(set) var selection = FamilyActivitySelection()
+    @Published private(set) var isMonitoring = false
 
     private let store = ManagedSettingsStore()
-    private let defaults = UserDefaults(suiteName: ScreenTimeAgent.appGroup) ?? .standard
-    private let selectionKey = "familyActivitySelection"
+    private let center = DeviceActivityCenter()
 
     private init() {
         refreshAuthorization()
         loadSelection()
+        isMonitoring = MonitorStore.isMonitoring
     }
 
     // MARK: - Authorization
@@ -60,17 +62,56 @@ final class ScreenTimeAgent: ObservableObject {
     }
 
     private func persistSelection() {
-        if let data = try? JSONEncoder().encode(selection) {
-            defaults.set(data, forKey: selectionKey)
-        }
+        // Shared with the monitor extension via the App Group.
+        MonitorStore.selection = selection
     }
 
     private func loadSelection() {
-        guard
-            let data = defaults.data(forKey: selectionKey),
-            let saved = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
-        else { return }
-        selection = saved
+        selection = MonitorStore.selection
+    }
+
+    // MARK: - Daily limit monitoring
+
+    /// Schedules a daily allowance for the selected apps. When usage reaches
+    /// `dailyLimitMinutes`, the monitor extension shields them; at the start of
+    /// each day the interval resets and shields lift.
+    func startMonitoring(dailyLimitMinutes: Int) {
+        persistSelection()
+        MonitorStore.dailyLimitMinutes = dailyLimitMinutes
+
+        let schedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(hour: 0, minute: 0),
+            intervalEnd: DateComponents(hour: 23, minute: 59),
+            repeats: true
+        )
+        let event = DeviceActivityEvent(
+            applications: selection.applicationTokens,
+            categories: selection.categoryTokens,
+            threshold: DateComponents(minute: dailyLimitMinutes)
+        )
+
+        do {
+            center.stopMonitoring([MonitorStore.activityName])
+            try center.startMonitoring(
+                MonitorStore.activityName,
+                during: schedule,
+                events: [MonitorStore.dailyLimitEvent: event]
+            )
+            setMonitoring(true)
+        } catch {
+            setMonitoring(false)
+        }
+    }
+
+    func stopMonitoring() {
+        center.stopMonitoring([MonitorStore.activityName])
+        clearShield()
+        setMonitoring(false)
+    }
+
+    private func setMonitoring(_ value: Bool) {
+        isMonitoring = value
+        MonitorStore.isMonitoring = value
     }
 
     // MARK: - Shielding

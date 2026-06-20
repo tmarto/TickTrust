@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10981673F80D4809BED22C28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783802A6C554F0E2A99AB4D0 /* Foundation.framework */; };
+		54F3030ABC269AA5F20D80A3 /* MonitorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113FDAF5A66CE77CEABB189 /* MonitorStore.swift */; };
+		6858AB209C4283F18A2A7298 /* TickTrustMonitor.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8D7F07F3F73AB5B3B2FC17BF /* TickTrustMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1000001 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001 /* iOSApp.swift */; };
 		A1000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002 /* ContentView.swift */; };
 		A1000003 /* ParentDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003 /* ParentDashboardView.swift */; };
@@ -24,9 +27,38 @@
 		A1000015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000017 /* Assets.xcassets */; };
 		A1000016 /* ScreenTimeAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000018 /* ScreenTimeAgent.swift */; };
 		A1000017 /* ChildDeviceSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000019 /* ChildDeviceSetupView.swift */; };
+		BDD8A6D658491A6EDAD22134 /* MonitorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D113FDAF5A66CE77CEABB189 /* MonitorStore.swift */; };
+		EBF2DE90958D2436E58B5C4E /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E93CC402B8C10591C27257 /* DeviceActivityMonitorExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5737D6110EF553C1DE1661DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAFE620B65B142B44E7322FD;
+			remoteInfo = TickTrustMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3BB1F8C03D561083615E7A43 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6858AB209C4283F18A2A7298 /* TickTrustMonitor.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2F94BCF989FAEBCD99B09184 /* TickTrustMonitor.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = TickTrustMonitor.entitlements; sourceTree = "<group>"; };
+		783802A6C554F0E2A99AB4D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8D7F07F3F73AB5B3B2FC17BF /* TickTrustMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TickTrustMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2000000 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2000001 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		A2000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +79,9 @@
 		A2000017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2000018 /* ScreenTimeAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAgent.swift; sourceTree = "<group>"; };
 		A2000019 /* ChildDeviceSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDeviceSetupView.swift; sourceTree = "<group>"; };
+		A2ECE7DF79767393B0B51BDF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4E93CC402B8C10591C27257 /* DeviceActivityMonitorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceActivityMonitorExtension.swift; sourceTree = "<group>"; };
+		D113FDAF5A66CE77CEABB189 /* MonitorStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MonitorStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,13 +92,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE138F46083B7BCFA3F22109 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10981673F80D4809BED22C28 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FDDF587D04399062B2EC812 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8AE7DCA9F7B2B054ACF8104 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A4000000 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				A2000000 /* iosApp.app */,
+				8D7F07F3F73AB5B3B2FC17BF /* TickTrustMonitor.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +125,8 @@
 			children = (
 				A4000002 /* iosApp */,
 				A4000000 /* Products */,
+				5FDDF587D04399062B2EC812 /* Frameworks */,
+				C6CD35DFA0C4E90EEAF5E76D /* TickTrustMonitor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,15 +178,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		A4000007 /* Agent */ = {
-			isa = PBXGroup;
-			children = (
-				A2000018 /* ScreenTimeAgent.swift */,
-				A2000019 /* ChildDeviceSetupView.swift */,
-			);
-			path = Agent;
-			sourceTree = "<group>";
-		};
 		A4000006 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +185,35 @@
 				A2000015 /* DeviceInstallView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		A4000007 /* Agent */ = {
+			isa = PBXGroup;
+			children = (
+				A2000018 /* ScreenTimeAgent.swift */,
+				A2000019 /* ChildDeviceSetupView.swift */,
+				D113FDAF5A66CE77CEABB189 /* MonitorStore.swift */,
+			);
+			path = Agent;
+			sourceTree = "<group>";
+		};
+		B8AE7DCA9F7B2B054ACF8104 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				783802A6C554F0E2A99AB4D0 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C6CD35DFA0C4E90EEAF5E76D /* TickTrustMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				A4E93CC402B8C10591C27257 /* DeviceActivityMonitorExtension.swift */,
+				A2ECE7DF79767393B0B51BDF /* Info.plist */,
+				2F94BCF989FAEBCD99B09184 /* TickTrustMonitor.entitlements */,
+			);
+			name = TickTrustMonitor;
+			path = TickTrustMonitor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,15 +226,34 @@
 				A6000001 /* Sources */,
 				A3000001 /* Frameworks */,
 				A6000002 /* Resources */,
+				3BB1F8C03D561083615E7A43 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D2EFC0156747B10EBC5594F0 /* PBXTargetDependency */,
 			);
 			name = iosApp;
 			productName = iosApp;
 			productReference = A2000000 /* iosApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FAFE620B65B142B44E7322FD /* TickTrustMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C98461171E1AB79AF3B7D04 /* Build configuration list for PBXNativeTarget "TickTrustMonitor" */;
+			buildPhases = (
+				B69B5E9F4D6BABB35847B585 /* Sources */,
+				BE138F46083B7BCFA3F22109 /* Frameworks */,
+				BE1225A047CB7188CCD0C8CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TickTrustMonitor;
+			productName = TickTrustMonitor;
+			productReference = 8D7F07F3F73AB5B3B2FC17BF /* TickTrustMonitor.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -191,6 +284,7 @@
 			projectRoot = "";
 			targets = (
 				A5000001 /* iosApp */,
+				FAFE620B65B142B44E7322FD /* TickTrustMonitor */,
 			);
 		};
 /* End PBXProject section */
@@ -201,6 +295,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000015 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE1225A047CB7188CCD0C8CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,12 +328,57 @@
 				A1000014 /* DeviceInstallView.swift in Sources */,
 				A1000016 /* ScreenTimeAgent.swift in Sources */,
 				A1000017 /* ChildDeviceSetupView.swift in Sources */,
+				54F3030ABC269AA5F20D80A3 /* MonitorStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B69B5E9F4D6BABB35847B585 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBF2DE90958D2436E58B5C4E /* DeviceActivityMonitorExtension.swift in Sources */,
+				BDD8A6D658491A6EDAD22134 /* MonitorStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D2EFC0156747B10EBC5594F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TickTrustMonitor;
+			target = FAFE620B65B142B44E7322FD /* TickTrustMonitor */;
+			targetProxy = 5737D6110EF553C1DE1661DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		6B3E3487DA6CCFC8756012E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = TickTrustMonitor/TickTrustMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NBTYA5Q847;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TickTrustMonitor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ticktrust.siwa.monitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		A9000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -358,8 +504,8 @@
 				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NBTYA5Q847;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = NBTYA5Q847;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -390,8 +536,8 @@
 				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NBTYA5Q847;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = NBTYA5Q847;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -414,9 +560,45 @@
 			};
 			name = Release;
 		};
+		E1D4C16CDB4AEE6303102DF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = TickTrustMonitor/TickTrustMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NBTYA5Q847;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TickTrustMonitor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ticktrust.siwa.monitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4C98461171E1AB79AF3B7D04 /* Build configuration list for PBXNativeTarget "TickTrustMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1D4C16CDB4AEE6303102DF2 /* Release */,
+				6B3E3487DA6CCFC8756012E0 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A7000000 /* Build configuration list for PBXProject "iosApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
