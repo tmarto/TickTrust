@@ -39,7 +39,7 @@ jobs:
       - name: Run unit tests with coverage
         run: ./gradlew :shared:koverXmlReport
 
-      - name: Check coverage threshold (60%)
+      - name: Check coverage threshold (70%)
         run: |
           python3 - << 'EOF'
           import xml.etree.ElementTree as ET, sys, os
@@ -64,8 +64,8 @@ jobs:
               sys.exit(1)
           pct = covered / total * 100
           print(f"Coverage: {pct:.1f}% ({covered}/{total} lines)")
-          if pct < 60:
-              print(f"FAIL: {pct:.1f}% is below 60% threshold")
+          if pct < 70:
+              print(f"FAIL: {pct:.1f}% is below 70% threshold")
               sys.exit(1)
           print("Coverage threshold passed.")
           EOF
@@ -77,6 +77,59 @@ jobs:
           name: coverage-report
           path: shared/build/reports/kover/
           retention-days: 14
+
+  # ── Job 1b: iOS unit tests + logic-layer coverage ─────────────────────────
+  ios-test:
+    runs-on: macos-latest
+    needs: lint-and-test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run iOS unit tests with coverage
+        run: |
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin); ids=[dev['udid'] for rt,devs in d['devices'].items() if 'iOS' in rt for dev in devs if dev.get('isAvailable') and 'iPhone' in dev['name']]; print(ids[0] if ids else '')")
+          echo "Using simulator: $DEVICE"
+          xcodebuild test \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
+            -destination "id=$DEVICE" \
+            -enableCodeCoverage YES \
+            -resultBundlePath build/ios-tests.xcresult \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Enforce iOS logic-layer coverage (>=70%)
+        run: |
+          python3 - << 'EOF'
+          import json, subprocess, sys
+          out = subprocess.check_output(
+              ["xcrun", "xccov", "view", "--report", "--json", "build/ios-tests.xcresult"]
+          )
+          report = json.loads(out)
+          # Gate the unit-testable logic files. SwiftUI views and Apple
+          # framework code (FamilyControls, networking) are excluded.
+          gated = {"Models.swift"}
+          covered = total = 0
+          rows = []
+          for target in report.get("targets", []):
+              for f in target.get("files", []):
+                  if f["name"] in gated:
+                      covered += f["coveredLines"]
+                      total += f["executableLines"]
+                      rows.append((f["name"], f["coveredLines"], f["executableLines"]))
+          if total == 0:
+              print("ERROR: no gated files found in coverage report")
+              sys.exit(1)
+          for name, c, e in rows:
+              print(f"{name}: {c}/{e}")
+          pct = covered / total * 100
+          print(f"iOS logic coverage: {pct:.1f}% ({covered}/{total} lines)")
+          if pct < 70:
+              print(f"FAIL: {pct:.1f}% is below 70% threshold")
+              sys.exit(1)
+          print("iOS coverage gate passed.")
+          EOF
 
   # ── Job 2: Integration tests (Android emulator) ───────────────────────────
   integration-test:
