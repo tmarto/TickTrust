@@ -41,12 +41,13 @@ final class ScreenTimeAgent: ObservableObject {
         isAuthorized = AuthorizationCenter.shared.authorizationStatus == .approved
     }
 
-    /// Prompts for Family Controls authorization for a child on this device.
-    /// Requires the device to be signed into a managed/child Apple ID (or, in
-    /// development, any account) and the `family-controls` entitlement.
+    /// Prompts for Family Controls authorization for this device.
+    /// `.individual` lets the app manage the device it runs on once the user
+    /// approves — no Family Sharing setup required. Needs the `family-controls`
+    /// entitlement.
     func requestAuthorization() async -> Bool {
         do {
-            try await AuthorizationCenter.shared.requestAuthorization(for: .child)
+            try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
             refreshAuthorization()
         } catch {
             isAuthorized = false
